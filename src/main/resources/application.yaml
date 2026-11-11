@@ -6,7 +6,7 @@ spring:
     name: user service
   data:
     mongodb:
-      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/userdb}
+      uri: mongodb+srv://sarojsabar12345_db_user:pBY7nhJobaJJljIs@user-data.myao8ka.mongodb.net/
       database: ${SPRING_DATA_MONGODB_DATABASE:userdb}
 
 #  datasource:
