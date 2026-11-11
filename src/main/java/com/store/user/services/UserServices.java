@@ -7,7 +7,6 @@ import com.store.user.models.Address;
 import com.store.user.models.User;
 import com.store.user.models.UserRole;
 import com.store.user.repository.UserRepositries;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,17 +34,16 @@ public class UserServices {
         return mapToUserResponse(newUser);
     }
 
-    public UserResponce getUserById(Long id) {
-        var  user = userRepositries.findById(id).orElse(null);
+    public UserResponce getUserById(String id) {
+        var  user = userRepositries.findById(String.valueOf(id)).orElse(null);
         if(user == null) {
             return null;
         }
         return mapToUserResponse(user);
     }
 
-    @Transactional
-    public UserResponce updateUserById(Long id, User user) {
-        var existingUser = userRepositries.findById(id).orElse(null);
+    public UserResponce updateUserById(String id, User user) {
+        var existingUser = userRepositries.findById(String.valueOf(id)).orElse(null);
         if (existingUser == null) {
             return null;
         }

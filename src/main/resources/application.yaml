@@ -4,17 +4,28 @@ server:
 spring:
   application:
     name: user service
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-    datasource:
-      url: jdbc:h2:mem:usertestdb
-      username: root
-      password: saroz123
-      driver-class-name: org.h2.Driver
-    jpa:
-      hibernate:
-        ddl-auto: created
-      show-sql: true
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/userdb}
+      database: ${SPRING_DATA_MONGODB_DATABASE:userdb}
+
+#  datasource:
+#    # Appending options ensures the JDBC driver connection handshake doesn't send "Asia/Calcutta"
+#    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/userdb?options=-c%20timezone=Asia/Kolkata}
+#    username: ${SPRING_DATASOURCE_USERNAME:saroz}
+#    password: ${SPRING_DATASOURCE_PASSWORD:saroz123}
+#    driver-class-name: org.postgresql.Driver
+#    hikari:
+#      connection-timeout: 20000
+#      maximum-pool-size: 10
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    database: postgresql
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        jdbc:
+#          time_zone: Asia/Kolkata
 

@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+    public ResponseEntity<?> getUserById(@PathVariable String id) {
         // Logic to retrieve a user by ID from the database
         var res = userServices.getUserById(id);
         if (res == null) {
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody User user) {
         var res = userServices.updateUserById(id, user);
         if (res == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
